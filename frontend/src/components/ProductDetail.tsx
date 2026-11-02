@@ -1,4 +1,5 @@
 "use client";
+import { flyToCart } from "@/lib/fly-to-cart";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -183,7 +184,7 @@ export function ProductDetail({
               <button
                 className="btn secondary"
                 disabled={!v?.active}
-                onClick={() => add(p, selected, qty)}
+                onClick={(event) => { add(p, selected, qty); flyToCart(event.currentTarget, p.images[0]); }}
               >
                 <ShoppingCart size={21} /> THÊM VÀO GIỎ
               </button>

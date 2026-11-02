@@ -5,6 +5,7 @@ import { Heart, ShoppingCart } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { money } from "@/lib/store-utils.mjs";
 import { useStore } from "./StoreProvider";
+import { flyToCart } from "@/lib/fly-to-cart";
 export function ProductCard({
   product: p,
   priority = false,
@@ -61,7 +62,7 @@ export function ProductCard({
           <span className="offer-note">{p.label || "Giá tốt hôm nay"}</span>
           <button
             aria-label={"Thêm " + p.name + " vào giỏ"}
-            onClick={() => add(p)}
+            onClick={(event) => { add(p); flyToCart(event.currentTarget, p.images[0]); }}
           >
             <ShoppingCart size={17} />
           </button>

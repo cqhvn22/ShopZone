@@ -167,7 +167,7 @@ export function Header({ demo }: { demo: boolean }) {
               </div>
             )}
           </div>
-          <Link className="cart-header" href="/gio-hang">
+          <Link className="cart-header" href="/gio-hang" data-cart-target>
             <span className="cart-icon">
               <ShoppingCart size={29} />
               <b aria-label="Số sản phẩm trong giỏ">
@@ -279,7 +279,7 @@ export function Header({ demo }: { demo: boolean }) {
           <Heart size={20} />
           Yêu thích
         </Link>
-        <Link href="/gio-hang">
+        <Link href="/gio-hang" data-cart-target>
           <ShoppingCart size={20} />
           Giỏ hàng
         </Link>
