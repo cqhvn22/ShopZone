@@ -1,0 +1,546 @@
+{
+  "categories": [
+    {
+      "id": "dien-thoai",
+      "slug": "dien-thoai",
+      "name": "Điện thoại",
+      "active": true
+    },
+    {
+      "id": "laptop",
+      "slug": "laptop",
+      "name": "Laptop",
+      "active": true
+    },
+    {
+      "id": "tai-nghe",
+      "slug": "tai-nghe",
+      "name": "Tai nghe & Loa",
+      "active": true
+    },
+    {
+      "id": "dong-ho",
+      "slug": "dong-ho",
+      "name": "Đồng hồ thông minh",
+      "active": true
+    },
+    {
+      "id": "phu-kien",
+      "slug": "phu-kien",
+      "name": "Phụ kiện",
+      "active": true
+    }
+  ],
+  "products": [
+    {
+      "id": "demo-1",
+      "slug": "iphone-13-pro",
+      "name": "iPhone 13 Pro 128GB | Chính hãng VN/A",
+      "brand": "Apple",
+      "categoryId": "dien-thoai",
+      "images": [
+        "/images/products/iphone-13-pro.webp"
+      ],
+      "description": "iPhone 13 Pro 128GB mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Apple",
+        "Dòng sản phẩm": "Điện thoại",
+        "Phiên bản": "Chính hãng VN/A",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-IPHONE-13-PRO",
+          "price": 17990000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Chính hãng VN/A"
+          }
+        }
+      ],
+      "oldPrice": 21990000,
+      "label": "Ưu đãi nổi bật"
+    },
+    {
+      "id": "demo-2",
+      "slug": "samsung-galaxy-s10",
+      "name": "Samsung Galaxy S10 128GB | Bản quốc tế",
+      "brand": "Samsung",
+      "categoryId": "dien-thoai",
+      "images": [
+        "/images/products/samsung-galaxy-s10.webp"
+      ],
+      "description": "Samsung Galaxy S10 128GB mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Samsung",
+        "Dòng sản phẩm": "Điện thoại",
+        "Phiên bản": "Bản quốc tế",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-SAMSUNG-GALAXY-S10",
+          "price": 6490000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Bản quốc tế"
+          }
+        }
+      ],
+      "oldPrice": 8990000
+    },
+    {
+      "id": "demo-3",
+      "slug": "apple-airpods",
+      "name": "Tai nghe Apple AirPods | Trắng",
+      "brand": "Apple",
+      "categoryId": "tai-nghe",
+      "images": [
+        "/images/products/apple-airpods.webp"
+      ],
+      "description": "Tai nghe Apple AirPods mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Apple",
+        "Dòng sản phẩm": "Tai nghe & Loa",
+        "Phiên bản": "Trắng",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-APPLE-AIRPODS",
+          "price": 2490000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Trắng"
+          }
+        }
+      ],
+      "oldPrice": 3290000
+    },
+    {
+      "id": "demo-4",
+      "slug": "apple-macbook-pro-14-inch-space-grey",
+      "name": "MacBook Pro 14 inch | M1 Pro 16GB/512GB",
+      "brand": "Apple",
+      "categoryId": "laptop",
+      "images": [
+        "/images/products/apple-macbook-pro-14-inch-space-grey.webp"
+      ],
+      "description": "MacBook Pro 14 inch mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Apple",
+        "Dòng sản phẩm": "Laptop",
+        "Phiên bản": "M1 Pro 16GB/512GB",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-APPLE-MACBOOK-PRO-14-INCH-SPACE-GREY",
+          "price": 36990000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "M1 Pro 16GB/512GB"
+          }
+        }
+      ],
+      "oldPrice": 44990000,
+      "label": "Ưu đãi nổi bật"
+    },
+    {
+      "id": "demo-5",
+      "slug": "oppo-f19-pro-plus",
+      "name": "OPPO F19 Pro+ 5G | 8GB/128GB",
+      "brand": "OPPO",
+      "categoryId": "dien-thoai",
+      "images": [
+        "/images/products/oppo-f19-pro-plus.webp"
+      ],
+      "description": "OPPO F19 Pro+ 5G mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "OPPO",
+        "Dòng sản phẩm": "Điện thoại",
+        "Phiên bản": "8GB/128GB",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-OPPO-F19-PRO-PLUS",
+          "price": 5990000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "8GB/128GB"
+          }
+        }
+      ],
+      "oldPrice": 7490000
+    },
+    {
+      "id": "demo-6",
+      "slug": "apple-watch-series-4-gold",
+      "name": "Apple Watch Series 4 | Viền nhôm vàng",
+      "brand": "Apple",
+      "categoryId": "dong-ho",
+      "images": [
+        "/images/products/apple-watch-series-4-gold.webp"
+      ],
+      "description": "Apple Watch Series 4 mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Apple",
+        "Dòng sản phẩm": "Đồng hồ thông minh",
+        "Phiên bản": "Viền nhôm vàng",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-APPLE-WATCH-SERIES-4-GOLD",
+          "price": 4990000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Viền nhôm vàng"
+          }
+        }
+      ],
+      "oldPrice": 6490000
+    },
+    {
+      "id": "demo-7",
+      "slug": "asus-zenbook-pro-dual-screen-laptop",
+      "name": "ASUS Zenbook Pro Duo | Màn hình kép",
+      "brand": "ASUS",
+      "categoryId": "laptop",
+      "images": [
+        "/images/products/asus-zenbook-pro-dual-screen-laptop.webp"
+      ],
+      "description": "ASUS Zenbook Pro Duo mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "ASUS",
+        "Dòng sản phẩm": "Laptop",
+        "Phiên bản": "Màn hình kép",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-ASUS-ZENBOOK-PRO-DUAL-SCREEN-LAPTOP",
+          "price": 28990000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Màn hình kép"
+          }
+        }
+      ],
+      "oldPrice": 34990000,
+      "label": "Ưu đãi nổi bật"
+    },
+    {
+      "id": "demo-8",
+      "slug": "apple-airpods-max-silver",
+      "name": "Tai nghe Apple AirPods Max | Bạc",
+      "brand": "Apple",
+      "categoryId": "tai-nghe",
+      "images": [
+        "/images/products/apple-airpods-max-silver.webp"
+      ],
+      "description": "Tai nghe Apple AirPods Max mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Apple",
+        "Dòng sản phẩm": "Tai nghe & Loa",
+        "Phiên bản": "Bạc",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-APPLE-AIRPODS-MAX-SILVER",
+          "price": 10490000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Bạc"
+          }
+        }
+      ],
+      "oldPrice": 12990000
+    },
+    {
+      "id": "demo-9",
+      "slug": "realme-c35",
+      "name": "realme C35 | 4GB/128GB",
+      "brand": "realme",
+      "categoryId": "dien-thoai",
+      "images": [
+        "/images/products/realme-c35.webp"
+      ],
+      "description": "realme C35 mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "realme",
+        "Dòng sản phẩm": "Điện thoại",
+        "Phiên bản": "4GB/128GB",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-REALME-C35",
+          "price": 3290000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "4GB/128GB"
+          }
+        }
+      ],
+      "oldPrice": 4290000
+    },
+    {
+      "id": "demo-10",
+      "slug": "new-dell-xps-13-9300-laptop",
+      "name": "Dell XPS 13 9300 | Core i7, 16GB/512GB",
+      "brand": "Dell",
+      "categoryId": "laptop",
+      "images": [
+        "/images/products/new-dell-xps-13-9300-laptop.webp"
+      ],
+      "description": "Dell XPS 13 9300 mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Dell",
+        "Dòng sản phẩm": "Laptop",
+        "Phiên bản": "Core i7, 16GB/512GB",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-NEW-DELL-XPS-13-9300-LAPTOP",
+          "price": 25990000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Core i7, 16GB/512GB"
+          }
+        }
+      ],
+      "oldPrice": 30990000,
+      "label": "Ưu đãi nổi bật"
+    },
+    {
+      "id": "demo-11",
+      "slug": "apple-homepod-mini-cosmic-grey",
+      "name": "Loa thông minh HomePod mini | Xám",
+      "brand": "Apple",
+      "categoryId": "tai-nghe",
+      "images": [
+        "/images/products/apple-homepod-mini-cosmic-grey.webp"
+      ],
+      "description": "Loa thông minh HomePod mini mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Apple",
+        "Dòng sản phẩm": "Tai nghe & Loa",
+        "Phiên bản": "Xám",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-APPLE-HOMEPOD-MINI-COSMIC-GREY",
+          "price": 2190000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Xám"
+          }
+        }
+      ],
+      "oldPrice": 2790000
+    },
+    {
+      "id": "demo-12",
+      "slug": "huawei-matebook-x-pro",
+      "name": "Huawei MateBook X Pro | Core i7, 16GB",
+      "brand": "Huawei",
+      "categoryId": "laptop",
+      "images": [
+        "/images/products/huawei-matebook-x-pro.webp"
+      ],
+      "description": "Huawei MateBook X Pro mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Huawei",
+        "Dòng sản phẩm": "Laptop",
+        "Phiên bản": "Core i7, 16GB",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-HUAWEI-MATEBOOK-X-PRO",
+          "price": 23990000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Core i7, 16GB"
+          }
+        }
+      ],
+      "oldPrice": 27990000
+    },
+    {
+      "id": "demo-13",
+      "slug": "vivo-s1",
+      "name": "vivo S1 | 6GB/128GB",
+      "brand": "vivo",
+      "categoryId": "dien-thoai",
+      "images": [
+        "/images/products/vivo-s1.webp"
+      ],
+      "description": "vivo S1 mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "vivo",
+        "Dòng sản phẩm": "Điện thoại",
+        "Phiên bản": "6GB/128GB",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-VIVO-S1",
+          "price": 3990000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "6GB/128GB"
+          }
+        }
+      ],
+      "oldPrice": 4990000,
+      "label": "Ưu đãi nổi bật"
+    },
+    {
+      "id": "demo-14",
+      "slug": "apple-iphone-charger",
+      "name": "Bộ sạc Apple USB-C | Chính hãng",
+      "brand": "Apple",
+      "categoryId": "phu-kien",
+      "images": [
+        "/images/products/apple-iphone-charger.webp"
+      ],
+      "description": "Bộ sạc Apple USB-C mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Apple",
+        "Dòng sản phẩm": "Phụ kiện",
+        "Phiên bản": "Chính hãng",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-APPLE-IPHONE-CHARGER",
+          "price": 490000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Chính hãng"
+          }
+        }
+      ],
+      "oldPrice": 690000
+    },
+    {
+      "id": "demo-15",
+      "slug": "lenovo-yoga-920",
+      "name": "Lenovo Yoga 920 | Laptop gập 360°",
+      "brand": "Lenovo",
+      "categoryId": "laptop",
+      "images": [
+        "/images/products/lenovo-yoga-920.webp"
+      ],
+      "description": "Lenovo Yoga 920 mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Lenovo",
+        "Dòng sản phẩm": "Laptop",
+        "Phiên bản": "Laptop gập 360°",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-LENOVO-YOGA-920",
+          "price": 16990000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Laptop gập 360°"
+          }
+        }
+      ],
+      "oldPrice": 19990000
+    },
+    {
+      "id": "demo-16",
+      "slug": "oppo-a57",
+      "name": "OPPO A57 | Thiết kế trẻ trung",
+      "brand": "OPPO",
+      "categoryId": "dien-thoai",
+      "images": [
+        "/images/products/oppo-a57.webp"
+      ],
+      "description": "OPPO A57 mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "OPPO",
+        "Dòng sản phẩm": "Điện thoại",
+        "Phiên bản": "Thiết kế trẻ trung",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-OPPO-A57",
+          "price": 3690000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Thiết kế trẻ trung"
+          }
+        }
+      ],
+      "oldPrice": 4490000,
+      "label": "Ưu đãi nổi bật"
+    },
+    {
+      "id": "demo-17",
+      "slug": "apple-magsafe-battery-pack",
+      "name": "Pin dự phòng Apple MagSafe | Trắng",
+      "brand": "Apple",
+      "categoryId": "phu-kien",
+      "images": [
+        "/images/products/apple-magsafe-battery-pack.webp"
+      ],
+      "description": "Pin dự phòng Apple MagSafe mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Apple",
+        "Dòng sản phẩm": "Phụ kiện",
+        "Phiên bản": "Trắng",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-APPLE-MAGSAFE-BATTERY-PACK",
+          "price": 1990000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Trắng"
+          }
+        }
+      ],
+      "oldPrice": 2490000
+    },
+    {
+      "id": "demo-18",
+      "slug": "beats-flex-wireless-earphones",
+      "name": "Tai nghe không dây Beats Flex",
+      "brand": "Beats",
+      "categoryId": "tai-nghe",
+      "images": [
+        "/images/products/beats-flex-wireless-earphones.webp"
+      ],
+      "description": "Tai nghe không dây Beats Flex mang đến lựa chọn phù hợp cho nhu cầu sử dụng và làm việc hằng ngày. Xem thông tin sản phẩm, lựa chọn phiên bản và thêm vào giỏ để so sánh trước khi mua. Thông số và giá trong bản xem thử chỉ có tính minh họa; cần cập nhật theo SKU thực tế trước khi bán hàng.",
+      "attributes": {
+        "Thương hiệu": "Beats",
+        "Dòng sản phẩm": "Tai nghe & Loa",
+        "Phiên bản": "Tiêu chuẩn",
+        "Tình trạng": "Sản phẩm minh họa"
+      },
+      "variants": [
+        {
+          "sku": "SZ-BEATS-FLEX-WIRELESS-EARPHONES",
+          "price": 1090000,
+          "active": true,
+          "attributes": {
+            "Phiên bản": "Tiêu chuẩn"
+          }
+        }
+      ],
+      "oldPrice": 1490000
+    }
+  ]
+}

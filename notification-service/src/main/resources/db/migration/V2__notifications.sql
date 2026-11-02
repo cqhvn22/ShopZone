@@ -1,0 +1,3 @@
+CREATE TABLE notifications(id UUID PRIMARY KEY,customer_id UUID NOT NULL,order_id UUID NOT NULL,event_id UUID NOT NULL,type VARCHAR(80) NOT NULL,channel VARCHAR(20) NOT NULL CHECK(channel IN ('IN_APP','EMAIL')),recipient VARCHAR(255) NOT NULL,subject VARCHAR(255) NOT NULL,content TEXT NOT NULL,status VARCHAR(20) NOT NULL CHECK(status IN ('PENDING','SENT','FAILED')),retry_count INTEGER NOT NULL DEFAULT 0,next_attempt_at TIMESTAMPTZ NOT NULL DEFAULT now(),sent_at TIMESTAMPTZ,created_at TIMESTAMPTZ NOT NULL DEFAULT now(),UNIQUE(event_id,channel));
+CREATE INDEX idx_notification_customer ON notifications(customer_id,created_at DESC);
+CREATE INDEX idx_notification_pending ON notifications(next_attempt_at) WHERE status='PENDING';

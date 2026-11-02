@@ -1,0 +1,81 @@
+@base = http://localhost:8080/api/v1
+@adminToken = paste-admin-token
+@customerToken = paste-customer-token
+@categoryId = paste-category-id
+@orderId = paste-order-id
+
+### Đăng ký khách
+POST {{base}}/auth/register
+Content-Type: application/json
+
+{"email":"buyer@example.test","password":"LongPassword123!","fullName":"Nguyễn An"}
+
+### Đăng nhập khách
+POST {{base}}/auth/login
+Content-Type: application/json
+
+{"email":"buyer@example.test","password":"LongPassword123!"}
+
+### Đăng nhập Admin: lấy thông tin từ .env
+POST {{base}}/auth/login
+Content-Type: application/json
+
+{"email":"admin@shopzone.local","password":"paste-password-from-env"}
+
+### Tạo danh mục
+POST {{base}}/categories
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{"name":"Điện thoại","slug":"dien-thoai","active":true}
+
+### Tạo sản phẩm
+POST {{base}}/products
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{"name":"Demo Phone","slug":"demo-phone","categoryId":"{{categoryId}}","brand":"ShopZone","variants":[{"sku":"PHONE-BLACK-128","price":20000000,"attributes":{"color":"Black"},"active":true}]}
+
+### Nhập kho
+PUT {{base}}/inventory/PHONE-BLACK-128
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{"onHand":10}
+
+### Tìm sản phẩm
+GET {{base}}/products?q=Phone&page=0&size=20
+
+### Đặt COD
+POST {{base}}/orders
+Authorization: Bearer {{customerToken}}
+Idempotency-Key: demo-checkout-001
+Content-Type: application/json
+
+{"items":[{"sku":"PHONE-BLACK-128","quantity":2}],"paymentMethod":"COD","shippingAddress":{"recipient":"Nguyễn An","phone":"0900000000","address":"123 Nguyễn Huệ","city":"TP Hồ Chí Minh"}}
+
+### Theo dõi đơn tới CONFIRMED và stockCommitted=true
+GET {{base}}/orders/{{orderId}}
+Authorization: Bearer {{customerToken}}
+
+### Xem thanh toán COD vẫn PENDING trước khi giao xong
+GET {{base}}/payments/{{orderId}}
+Authorization: Bearer {{customerToken}}
+
+### Giao hàng
+PATCH {{base}}/orders/{{orderId}}/status
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{"status":"SHIPPING"}
+
+### Giao hoàn tất
+PATCH {{base}}/orders/{{orderId}}/status
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{"status":"COMPLETED"}
+
+### Thông báo của tôi
+GET {{base}}/notifications
+Authorization: Bearer {{customerToken}}

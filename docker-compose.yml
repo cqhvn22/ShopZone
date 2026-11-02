@@ -1,0 +1,222 @@
+name: shopzone
+x-security: &security
+  JWT_SECRET: ${JWT_SECRET:?Run scripts/init-env.ps1 first}
+x-database: &database
+  <<: *security
+  DB_PASSWORD: ${DB_PASSWORD:?Run scripts/init-env.ps1 first}
+  KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run scripts/init-env.ps1 first}
+      SHOPZONE_DB_PASSWORD: ${DB_PASSWORD}
+    ports: ["127.0.0.1:5433:5432"]
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./infra/postgres:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  mongodb:
+    image: mongo:8.0
+    ports: ["127.0.0.1:27017:27017"]
+    volumes: ["mongo-data:/data/db"]
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+  kafka:
+    image: apache/kafka:3.9.1
+    ports: ["127.0.0.1:9092:9094"]
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,EXTERNAL://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
+    volumes: ["kafka-data:/var/lib/kafka/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+  mailpit:
+    image: axllent/mailpit:v1.20
+    ports: ["127.0.0.1:8025:8025", "127.0.0.1:1025:1025"]
+  auth-service:
+    build:
+      context: .
+      args: { MODULE: auth-service }
+    environment:
+      <<: *database
+      DB_URL: jdbc:postgresql://postgres:5432/auth_db
+      DB_USER: auth_user
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    depends_on:
+      postgres: { condition: service_healthy }
+      kafka: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8081/actuator/health/readiness"]
+      interval: 10s
+      timeout: 5s
+      start_period: 90s
+      retries: 20
+    restart: unless-stopped
+  product-service:
+    build:
+      context: .
+      args: { MODULE: product-service }
+    environment:
+      <<: *security
+      MONGODB_URI: mongodb://mongodb:27017/product_db
+    depends_on:
+      mongodb: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8082/actuator/health/readiness"]
+      interval: 10s
+      timeout: 5s
+      start_period: 90s
+      retries: 20
+    restart: unless-stopped
+  order-service:
+    build:
+      context: .
+      args: { MODULE: order-service }
+    environment:
+      <<: *database
+      DB_URL: jdbc:postgresql://postgres:5432/order_db
+      DB_USER: order_user
+      PRODUCT_URL: http://product-service:8082
+    depends_on:
+      postgres: { condition: service_healthy }
+      kafka: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8083/actuator/health/readiness"]
+      interval: 10s
+      timeout: 5s
+      start_period: 90s
+      retries: 20
+    restart: unless-stopped
+  inventory-service:
+    build:
+      context: .
+      args: { MODULE: inventory-service }
+    environment:
+      <<: *database
+      DB_URL: jdbc:postgresql://postgres:5432/inventory_db
+      DB_USER: inventory_user
+    depends_on:
+      postgres: { condition: service_healthy }
+      kafka: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8084/actuator/health/readiness"]
+      interval: 10s
+      timeout: 5s
+      start_period: 90s
+      retries: 20
+    restart: unless-stopped
+  payment-service:
+    build:
+      context: .
+      args: { MODULE: payment-service }
+    environment:
+      <<: *database
+      DB_URL: jdbc:postgresql://postgres:5432/payment_db
+      DB_USER: payment_user
+      PAYMENT_CALLBACK_SECRET: ${PAYMENT_CALLBACK_SECRET:?Run scripts/init-env.ps1 first}
+    depends_on:
+      postgres: { condition: service_healthy }
+      kafka: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8085/actuator/health/readiness"]
+      interval: 10s
+      timeout: 5s
+      start_period: 90s
+      retries: 20
+    restart: unless-stopped
+  notification-service:
+    build:
+      context: .
+      args: { MODULE: notification-service }
+    environment:
+      <<: *database
+      DB_URL: jdbc:postgresql://postgres:5432/notification_db
+      DB_USER: notification_user
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+    depends_on:
+      postgres: { condition: service_healthy }
+      kafka: { condition: service_healthy }
+      mailpit: { condition: service_started }
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8086/actuator/health/readiness"]
+      interval: 10s
+      timeout: 5s
+      start_period: 90s
+      retries: 20
+    restart: unless-stopped
+  api-gateway:
+    build:
+      context: .
+      args: { MODULE: api-gateway }
+    ports: ["127.0.0.1:8080:8080"]
+    environment:
+      <<: *security
+      AUTH_URL: http://auth-service:8081
+      PRODUCT_URL: http://product-service:8082
+      ORDER_URL: http://order-service:8083
+      INVENTORY_URL: http://inventory-service:8084
+      PAYMENT_URL: http://payment-service:8085
+      NOTIFICATION_URL: http://notification-service:8086
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
+    depends_on:
+      auth-service: { condition: service_healthy }
+      product-service: { condition: service_healthy }
+      order-service: { condition: service_healthy }
+      inventory-service: { condition: service_healthy }
+      payment-service: { condition: service_healthy }
+      notification-service: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/actuator/health/readiness"]
+      interval: 10s
+      timeout: 5s
+      start_period: 60s
+      retries: 20
+    restart: unless-stopped
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_SITE_URL: ${SITE_URL:-http://localhost:3000}
+    ports: ["127.0.0.1:3000:3000"]
+    environment:
+      BACKEND_URL: http://api-gateway:8080
+      SHOPZONE_DATA_MODE: ${SHOPZONE_DATA_MODE:-backend}
+      NEXT_PUBLIC_SITE_URL: ${SITE_URL:-http://localhost:3000}
+    depends_on:
+      api-gateway: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 10s
+      start_period: 60s
+      retries: 15
+    restart: unless-stopped
+volumes:
+  postgres-data:
+  mongo-data:
+  kafka-data:

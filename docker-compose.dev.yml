@@ -1,0 +1,14 @@
+# Publish service ports only for running/debugging individual services in IntelliJ.
+services:
+  auth-service:
+    ports: ["127.0.0.1:8081:8081"]
+  product-service:
+    ports: ["127.0.0.1:8082:8082"]
+  order-service:
+    ports: ["127.0.0.1:8083:8083"]
+  inventory-service:
+    ports: ["127.0.0.1:8084:8084"]
+  payment-service:
+    ports: ["127.0.0.1:8085:8085"]
+  notification-service:
+    ports: ["127.0.0.1:8086:8086"]

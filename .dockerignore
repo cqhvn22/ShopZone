@@ -1,0 +1,10 @@
+**/target
+.git
+.env
+.seed-*.json
+**/node_modules
+**/.next
+**/.next*
+**/.env.local
+**/*.tsbuildinfo
+.mvn/repository

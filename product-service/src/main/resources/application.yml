@@ -1,0 +1,25 @@
+server:
+  port: 8082
+  shutdown: graceful
+spring:
+  application:
+    name: product-service
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/product_db}
+      auto-index-creation: true
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+shopzone:
+  jwt-secret: ${JWT_SECRET}
+  issuer: shopzone

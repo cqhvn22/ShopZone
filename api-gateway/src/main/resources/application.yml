@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  shutdown: graceful
+spring:
+  application:
+    name: api-gateway
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+shopzone:
+  jwt-secret: ${JWT_SECRET}
+  issuer: shopzone
+  auth-url: ${AUTH_URL:http://localhost:8081}
+  product-url: ${PRODUCT_URL:http://localhost:8082}
+  order-url: ${ORDER_URL:http://localhost:8083}
+  inventory-url: ${INVENTORY_URL:http://localhost:8084}
+  payment-url: ${PAYMENT_URL:http://localhost:8085}
+  notification-url: ${NOTIFICATION_URL:http://localhost:8086}
+  cors-origins: ${CORS_ORIGINS:http://localhost:5173}

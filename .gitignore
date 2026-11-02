@@ -1,0 +1,14 @@
+**/target/
+.idea/
+*.iml
+.env
+.env.*
+!.env.example
+**/*.log
+**/node_modules/
+**/.next*/
+**/*.tsbuildinfo
+frontend/work/
+frontend/outputs/
+.seed-*.json
+.mvn/repository/
