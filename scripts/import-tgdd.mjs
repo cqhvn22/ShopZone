@@ -182,36 +182,43 @@ async function main() {
     ];
   }
   const rows = [];
+  const skipped = [];
   for (const url of urls.slice(0, max)) {
     if (!sourceUrl(url).pathname.startsWith("/dtdd/"))
       throw Error("This importer supports phone product pages only.");
     await new Promise((resolve) => setTimeout(resolve, 1500));
     const products = parseProducts(await download(url), url);
-    if (products.length !== 1)
-      throw Error(
-        `Expected one product with a VND offer at ${url}; found ${products.length}. Nothing imported.`,
-      );
+    if (products.length !== 1) {
+      skipped.push({url, reason: `Expected one product with a VND price; found ${products.length}`});
+      console.log(`SKIP ${url}: no unambiguous priced product`);
+      continue;
+    }
     rows.push(products[0]);
+    console.log(`SCAN ${rows.length + skipped.length}/${Math.min(urls.length,max)}: ${products[0].name}`);
   }
   if (!rows.length)
     throw Error("No validated products found; nothing imported.");
   const unique = [...new Map(rows.map((r) => [r.source, r])).values()];
-  console.log(
-    JSON.stringify(
-      {
+  const report = {
         mode: apply ? "apply" : "preview",
         fetchedAt: new Date().toISOString(),
         note: "Current source listing, not a verified release-date ranking.",
         products: unique,
-      },
-      null,
-      2,
-    ),
-  );
+        skipped,
+        result: {created:0,updated:0},
+  };
   if (apply) {
     const api = createApi();
-    console.log(await importProducts(unique, api, await loginAdmin(api)));
+    report.result = await importProducts(unique, api, await loginAdmin(api));
   }
+  const reportIndex=args.indexOf('--report');
+  if(reportIndex>=0){
+    if(!args[reportIndex+1] || args[reportIndex+1].startsWith('--')) throw Error('--report requires a file path');
+    fs.writeFileSync(args[reportIndex+1],JSON.stringify(report,null,2)+'\n');
+    console.log(`Report: ${args[reportIndex+1]}`);
+  }
+  console.log(JSON.stringify({mode:report.mode,scanned:rows.length+skipped.length,valid:unique.length,skipped:skipped.length,...report.result}));
+  if(!apply && reportIndex<0)console.log(JSON.stringify(unique,null,2));
 }
 if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url)
   main().catch((e) => {

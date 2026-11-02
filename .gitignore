@@ -11,4 +11,5 @@
 frontend/work/
 frontend/outputs/
 .seed-*.json
+reports/
 .mvn/repository/

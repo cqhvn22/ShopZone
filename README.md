@@ -4,6 +4,8 @@ Backend thương mại điện tử triển khai từ FLOW.md: Java 17, Spring B
 
 Sổ địa chỉ tài khoản, lựa chọn tỉnh/phường xã và công cụ nhập sản phẩm TGDD: xem [hướng dẫn](docs/addresses-and-catalog-import.md). Chạy `node scripts/import-tgdd.mjs --limit 6` để xem trước; thêm `--apply` để nhập vào database đang chạy.
 
+Quét và lưu vào DB trên Windows: `powershell -ExecutionPolicy Bypass -File .\scripts\scan-products.ps1 -Limit 20`. Thêm `-Preview` để chỉ xem trước. Báo cáo mỗi lần chạy nằm trong `reports/`.
+
 ## Kết nối CSDL và nạp dữ liệu phát triển
 
 Mở Docker Desktop, đợi **Engine running**, rồi chạy PowerShell tại thư mục này:

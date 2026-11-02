@@ -2,6 +2,7 @@
 .git
 .env
 .seed-*.json
+reports/
 **/node_modules
 **/.next
 **/.next*

@@ -8,6 +8,16 @@ Checkout có lưu/sửa/xóa địa chỉ, chọn địa chỉ đã lưu và đ�
 
 ## Nhập sản phẩm TGDD
 
+Lệnh quét và lưu DB thuận tiện trên Windows:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\scan-products.ps1 -Limit 20
+# Chỉ xem trước, chưa ghi DB:
+powershell -ExecutionPolicy Bypass -File .\scripts\scan-products.ps1 -Limit 5 -Preview
+```
+
+Mỗi lần chạy có tiến độ theo URL và báo cáo JSON trong `reports/` gồm sản phẩm, nguồn, số tạo mới/cập nhật/bỏ qua. Trang không có một sản phẩm với giá VND rõ ràng sẽ bị bỏ qua; lỗi kết nối hoặc bị nguồn chặn làm tool dừng. `-UrlsFile` nhận đường dẫn file JSON chứa mảng URL sản phẩm điện thoại. Thư mục báo cáo được loại khỏi Git và Docker build.
+
 Tại thư mục gốc dự án, khi backend đã chạy và `.env` có tài khoản admin:
 
 ```powershell
