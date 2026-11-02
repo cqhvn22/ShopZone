@@ -60,6 +60,7 @@ export type Order = {
     phone: string;
     address: string;
     city: string;
+    ward?: string;
   };
   history: {
     oldStatus?: string;

@@ -2,6 +2,8 @@
 
 Backend thương mại điện tử triển khai từ FLOW.md: Java 17, Spring Boot 3.5.16, Spring Cloud 2025.0.3, PostgreSQL, MongoDB, Kafka, JWT/RBAC, Flyway, Saga và Transactional Outbox.
 
+Sổ địa chỉ tài khoản, lựa chọn tỉnh/phường xã và công cụ nhập sản phẩm TGDD: xem [hướng dẫn](docs/addresses-and-catalog-import.md). Chạy `node scripts/import-tgdd.mjs --limit 6` để xem trước; thêm `--apply` để nhập vào database đang chạy.
+
 ## Kết nối CSDL và nạp dữ liệu phát triển
 
 Mở Docker Desktop, đợi **Engine running**, rồi chạy PowerShell tại thư mục này:

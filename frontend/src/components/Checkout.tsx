@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   ShoppingBag,
 } from "lucide-react";
+import { AddressFields } from "./AddressFields";
 import { useStore } from "./StoreProvider";
 import { cartTotal, money } from "@/lib/store-utils.mjs";
 export function Checkout({ demo }: { demo: boolean }) {
@@ -33,6 +34,7 @@ export function Checkout({ demo }: { demo: boolean }) {
         phone: String(form.get("phone")).trim(),
         address: String(form.get("address")).trim(),
         city: String(form.get("city")).trim(),
+        ward: String(form.get("ward")).trim(),
       },
     };
     const fingerprint = JSON.stringify(body);
@@ -120,103 +122,7 @@ export function Checkout({ demo }: { demo: boolean }) {
             <h2>
               <MapPin size={19} /> Địa chỉ nhận hàng
             </h2>
-            <div className="form-grid">
-              <div className="form-field">
-                <label className="field-label" htmlFor="recipient">
-                  Họ và tên người nhận
-                </label>
-                <input
-                  id="recipient"
-                  name="recipient"
-                  required
-                  maxLength={150}
-                  defaultValue={user?.fullName}
-                  autoComplete="shipping name"
-                  placeholder="Nhập họ và tên"
-                />
-              </div>
-              <div className="form-field">
-                <label className="field-label" htmlFor="shipping-phone">
-                  Số điện thoại
-                </label>
-                <input
-                  id="shipping-phone"
-                  name="phone"
-                  required
-                  maxLength={20}
-                  type="tel"
-                  autoComplete="shipping tel"
-                  placeholder="Số điện thoại nhận hàng"
-                />
-              </div>
-            </div>
-            <div className="form-field">
-              <label className="field-label" htmlFor="city">
-                Tỉnh / Thành phố
-              </label>
-              <select
-                id="city"
-                name="city"
-                required
-                autoComplete="shipping address-level1"
-              >
-                <option value="">Chọn tỉnh / thành phố</option>
-                {[
-                  "TP. Hồ Chí Minh",
-                  "Hà Nội",
-                  "Đà Nẵng",
-                  "Cần Thơ",
-                  "Hải Phòng",
-                  "An Giang",
-                  "Bắc Ninh",
-                  "Cà Mau",
-                  "Cao Bằng",
-                  "Đắk Lắk",
-                  "Điện Biên",
-                  "Đồng Nai",
-                  "Đồng Tháp",
-                  "Gia Lai",
-                  "Hà Tĩnh",
-                  "Hưng Yên",
-                  "Khánh Hòa",
-                  "Lai Châu",
-                  "Lâm Đồng",
-                  "Lạng Sơn",
-                  "Lào Cai",
-                  "Nghệ An",
-                  "Ninh Bình",
-                  "Phú Thọ",
-                  "Quảng Ngãi",
-                  "Quảng Ninh",
-                  "Quảng Trị",
-                  "Sơn La",
-                  "Tây Ninh",
-                  "Thái Nguyên",
-                  "Thanh Hóa",
-                  "Huế",
-                  "Tuyên Quang",
-                  "Vĩnh Long",
-                ]
-                  .sort((a, b) => a.localeCompare(b, "vi"))
-                  .map((x) => (
-                    <option key={x}>{x}</option>
-                  ))}
-              </select>
-            </div>
-            <div className="form-field">
-              <label className="field-label" htmlFor="address">
-                Địa chỉ chi tiết
-              </label>
-              <textarea
-                id="address"
-                name="address"
-                required
-                maxLength={500}
-                rows={3}
-                autoComplete="shipping street-address"
-                placeholder="Số nhà, tên đường, phường / xã…"
-              />
-            </div>
+            <AddressFields user={user} />
           </div>
           <div className="panel payment-method-panel">
             <h2>

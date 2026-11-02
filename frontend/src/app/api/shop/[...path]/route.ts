@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { sameOrigin } from "@/lib/request-origin";
 import { backend, isDemo } from "@/lib/catalog";
 const allowed =
-  /^(auth\/(login|register)|products(?:\/[^/]+(?:\/status)?)?|categories(?:\/[^/]+)?|cart(?:\/items(?:\/[^/]+)?)?|orders(?:\/[^/]+(?:\/(?:cancel|status))?)?|payments\/[^/]+|notifications|users(?:\/[^/]+(?:\/status)?)?|admin\/statistics|inventory\/[^/]+)$/;
+  /^(auth\/(login|register)|products(?:\/[^/]+(?:\/status)?)?|categories(?:\/[^/]+)?|cart(?:\/items(?:\/[^/]+)?)?|orders(?:\/[^/]+(?:\/(?:cancel|status))?)?|payments\/[^/]+|notifications|users(?:\/me\/addresses(?:\/[^/]+)?|\/[^/]+(?:\/status)?)?|admin\/statistics|inventory\/[^/]+)$/;
 async function proxy(
   request: NextRequest,
   { params }: { params: Promise<{ path: string[] }> },

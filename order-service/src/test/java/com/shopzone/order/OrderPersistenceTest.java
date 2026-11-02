@@ -40,7 +40,7 @@ class OrderPersistenceTest {
     order.paymentMethod = "COD";
     order.idempotencyKey = "checkout-1";
     order.requestHash = "hash";
-    order.shippingAddress = new ShippingAddress("Buyer", "0900000000", "123 Street", "HCM");
+    order.shippingAddress = new ShippingAddress("Buyer", "0900000000", "123 Street", "HCM", "Phuong Test");
     order.add(
         new OrderSnapshot.Line("product", "PHONE", "Phone", new BigDecimal("20000000.00"), 1), 2);
     order.history.add(new StatusChange(null, "PENDING", "Created"));
@@ -50,6 +50,7 @@ class OrderPersistenceTest {
     assertEquals(new BigDecimal("40000000.00"), loaded.totalAmount);
     assertEquals("Phone", loaded.items.get(0).productName);
     assertEquals("123 Street", loaded.shippingAddress.address());
+    assertEquals("Phuong Test", loaded.shippingAddress.ward());
     assertEquals("PENDING", loaded.history.get(0).newStatus);
   }
 }

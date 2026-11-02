@@ -7,7 +7,7 @@ const config = {
   experimental: process.platform === "win32" ? { cpus: 1 } : undefined,
   cleanDistDir: process.platform !== "win32",
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "cdn.dummyjson.com" }],
+    remotePatterns: [{ protocol: "https", hostname: "cdn.dummyjson.com" }, { protocol: "https", hostname: "cdn.tgdd.vn" }, { protocol: "https", hostname: "cdnv2.tgdd.vn" }, { protocol: "https", hostname: "cdnv2-tmdt.tgdd.vn" }],
   },
   async headers() {
     return [

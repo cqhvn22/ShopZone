@@ -150,7 +150,7 @@ export function Orders({ id }: { id?: string }) {
               <p>
                 {order.shippingAddress.phone}
                 <br />
-                {order.shippingAddress.address}, {order.shippingAddress.city}
+                {[order.shippingAddress.address, order.shippingAddress.ward, order.shippingAddress.city].filter(Boolean).join(", ")}
               </p>
             </div>
             <div className="order-items">
